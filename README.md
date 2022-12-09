@@ -18,6 +18,26 @@ A simple proof-of-concept Sinatra app to generate Nuclei YAML templates for diff
 ## Examples
 Here are a few examples of two different templates that can be generated:
 
+Public PHPinfo()
+```
+id: PHPinfo checker
+
+info:
+  name: PHPinfo() page
+  author: Rutger Harmers
+
+requests:
+  - method: GET
+    path:
+      - "http://testphp.vulnweb.com/secured/phpinfo.php"
+    matchers:
+      - type: word
+        words:
+          - "PHP Extension"
+          - "PHP Version"
+        condition: and
+```
+
 Reflected XSS
 ```
 id: XSS checker
@@ -39,28 +59,6 @@ requests:
       - type: regex
         target: body
         pattern: "{{payload}}"
-```
-
-Public PHPinfo()
-```
-id: h1check-phpinfo
-
-info:
-  name: PHPinfo Disclosure
-  author: Rutger Harmers
-  severity: low
-  description: A “PHPinfo” page was found. The output of the phpinfo() command can reveal detailed PHP environment information.
-
-requests:
-  - method: GET
-    path:
-      - "http://testphp.vulnweb.com/secured/phpinfo.php"
-    matchers:
-      - type: word
-        words:
-          - "PHP Extension"
-          - "PHP Version"
-        condition: and
 ```
 
 ## About
