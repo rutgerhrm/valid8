@@ -63,7 +63,7 @@ requests:
         condition: and
 ```
 
-## Contributions
+## About
 This is a proof-of-concept app and is not intended for production use.
 
 ## Credits
