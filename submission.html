@@ -15,15 +15,37 @@
     <p>Please fill out the form below to submit the vulnerability and generate a YAML template out of it!</p>
     <form action="/template" method="POST">
       <label for="vuln_category">Vulnerability category:</label><br>
-      <select id="vuln_category" name="vuln_category">
+      <select id="vuln-category" name="vuln_category">
         <option value="1">XSS</option>
         <option value="2">Open redirect</option>
+        <option value="3">PHPinfo()</option>
       </select><br><br>
       <label for="target">Target URL:</label><br>
       <input type="text" id="target" name="target"><br><br>
-      <label for="payload">Payload:</label><br>
-      <input type="text" id="payload" name="payload"><br><br>
+      <label id="payloadtxt" for="payload">Payload:</label><br>
+      <input id="payload" type="text" name="payload" placeholder="Enter payload">
       <input type="submit" value="Submit">
+      
+      <script>
+        // Get the select element and the payload input element
+        var select = document.getElementById("vuln-category");
+        var payloadInput = document.getElementById("payload");
+        var payloadInputtxt = document.getElementById("payloadtxt");
+      
+        // Add a change event listener to the select element
+        select.addEventListener("change", function() {
+          // If the PHPinfo() option is selected, hide the payload input and payload text elements
+          if (this.value === "3") {
+            payloadInput.style.display = "none";
+            payloadInputtxt.style.display = "none";
+          }
+          // Otherwise, show the payload input and text elements
+          else {
+            payloadInput.style.display = "block";
+            payloadInputtxt.style.display = "block";
+          }
+        });
+      </script>
     </form>
   </main>
   <footer>
@@ -31,3 +53,5 @@
   </footer>
 </body>
 </html>
+
+
