@@ -41,24 +41,26 @@ requests:
         pattern: "{{payload}}"
 ```
 
-Open Redirect
+Public PHPinfo()
 ```
-id: Open redirect checker
+id: h1check-phpinfo
 
 info:
-  name: Open redirect
+  name: PHPinfo Disclosure
   author: Rutger Harmers
+  severity: low
+  description: A “PHPinfo” page was found. The output of the phpinfo() command can reveal detailed PHP environment information.
 
 requests:
   - method: GET
     path:
-      - "{{target}}"
-
-    checks:
-      - type: regex
-        target: location
-        pattern: "{{payload}}"
-
+      - "http://testphp.vulnweb.com/secured/phpinfo.php"
+    matchers:
+      - type: word
+        words:
+          - "PHP Extension"
+          - "PHP Version"
+        condition: and
 ```
 
 ## Contributions
