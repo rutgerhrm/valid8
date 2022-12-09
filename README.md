@@ -16,7 +16,7 @@ A simple proof-of-concept Sinatra app to generate Nuclei YAML templates for diff
 - The generated template will be output to the terminal and a success page will be displayed in the browser.
 
 ## Examples
-Here are a few examples of the two different templates that can be generated:
+Here are a few examples of two different templates that can be generated:
 
 Reflected XSS
 ```
