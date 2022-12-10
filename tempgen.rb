@@ -1,15 +1,46 @@
-# YAML template generator app POC
-# Rutger Harmers, Intern at HackerOne
+# YAML template generator POC
+# Rutger Harmers
 
 require 'sinatra'
 
 # Define the Nuclei YAML templates for different vulnerability categories (just two for now)
 xss_template = <<-YAML
-id: RXSS checker
+id: valid8-rxss
 
 info:
-  name: Reflected XSS
+  name: RXSS Validation
   author: Rutger Harmers
+  severity: low
+
+requests:
+  - method: GET
+    path:
+      - '{{target}}'
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - '{{payload}}'
+        part: body
+
+      - type: word
+        words:
+          - "text/html"
+        part: header
+
+      - type: status
+        status:
+          - 200
+YAML
+
+open_redirect_template = <<-YAML
+id: valid8-openred
+
+info:
+  name: Open Redirect Detection
+  author: Rutger Harmers, Princechaddha
+  severity: medium
 
 requests:
   - method: GET
@@ -17,41 +48,139 @@ requests:
       - "{{target}}"
 
     payloads:
-      rce:
-        - "{{payload}}"
+      redirect:
+        - "evil.com"
 
-    checks:
+    fuzzing:
+      - part: query
+        mode: single
+        keys:
+          - AuthState
+          - URL
+          - _url
+          - callback
+          - checkout
+          - checkout_url
+          - content
+          - continue
+          - continueTo
+          - counturl
+          - data
+          - dest
+          - dest_url
+          - destination
+          - dir
+          - document
+          - domain
+          - done
+          - download
+          - feed
+          - file
+          - file_name
+          - file_url
+          - folder
+          - folder_url
+          - forward
+          - from_url
+          - go
+          - goto
+          - host
+          - html
+          - http
+          - https
+          - image
+          - image_src
+          - image_url
+          - imageurl
+          - img
+          - img_url
+          - include
+          - langTo
+          - load_file
+          - load_url
+          - login_to
+          - login_url
+          - logout
+          - media
+          - navigation
+          - next
+          - next_page
+          - open
+          - out
+          - page
+          - page_url
+          - pageurl
+          - path
+          - picture
+          - port
+          - proxy
+          - r
+          - r2
+          - redir
+          - redirect
+          - redirectUri
+          - redirectUrl
+          - redirect_to
+          - redirect_uri
+          - redirect_url
+          - reference
+          - referrer
+          - req
+          - request
+          - ret
+          - retUrl
+          - return
+          - returnTo
+          - return_path
+          - return_to
+          - return_url
+          - rt
+          - rurl
+          - show
+          - site
+          - source
+          - src
+          - target
+          - to
+          - u
+          - uri
+          - url
+          - val
+          - validate
+          - view
+          - window
+        fuzz:
+          - "https://{{redirect}}"
+
+      - part: query
+        mode: single
+        values:
+          - "https?://" # Replace HTTP URLs with alternatives
+        fuzz:
+          - "https://{{redirect}}"
+
+    stop-at-first-match: true
+    matchers-condition: and
+    matchers:
       - type: regex
-        target: body
-        pattern: "{{payload}}"
-YAML
+        part: header
+        regex:
+          - "(?m)^(?:Location\s*?:\s*?)(?:https?:\/\/|\/\/|\/\\\\|\/\\)?(?:[a-zA-Z0-9\-_\.@]*)evil\.com\/?(\/|[^.].*)?$" # https://regex101.com/r/ZDYhFh/1
 
-open_redirect_template = <<-YAML
-id: Open redirect checker
-
-info:
-  name: Open redirect
-  author: Rutger Harmers
-
-requests:
-  - method: GET
-    path:
-      - "{{target}}"
-
-    checks:
-      - type: regex
-        target: location
-        pattern: "{{payload}}"
+      - type: status
+        status:
+          - 301
+          - 302
+          - 307
 YAML
 
 phpinfo_template = <<-YAML
-id: h1check-phpinfo
+id: valid8-phpinfo
 
 info:
-  name: PHPinfo Disclosure
+  name: PHPinfo Detection
   author: Rutger Harmers
   severity: low
-  description: A “PHPinfo” page was found. The output of the phpinfo() command can reveal detailed PHP environment information.
 
 requests:
   - method: GET
