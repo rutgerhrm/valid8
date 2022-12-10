@@ -64,7 +64,6 @@ requests:
         condition: and
 ```
 
----
 
 Reflected XSS
 ```yaml
