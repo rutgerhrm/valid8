@@ -4,9 +4,10 @@ A simple tool that automates the generation of Nuclei templates based on user-sp
 ## Overview
 Valid8 is a simple proof-of-concept Sinatra app to generate Nuclei YAML templates for different vulnerability categories based on user input. The project currently supports three vulnerability categories: Reflected XSS, Open Redirect, and PHPinfo() disclosure.
 
----
 
-## Requirements
+
+Requirements
+---
 - To run this app, you need to have Sinatra installed. To install Sinatra, run the following command in the terminal:
 ```bash
 gem install sinatra
