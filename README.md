@@ -2,7 +2,7 @@
 Automatically generates pre-defined YAML templates out of user input.  
 
 ## Overview
-Valid8 is a simple proof-of-concept Sinatra app to generate Nuclei YAML templates for different vulnerability categories based on user input. The project currently supports three vulnerability categories: XSS, open redirect, and PHPinfo disclosure.
+Valid8 is a simple proof-of-concept Sinatra app to generate Nuclei YAML templates for different vulnerability categories based on user input. The project currently supports three vulnerability categories: XSS, Open Redirect, and PHPinfo() disclosure.
 
 ---
 
