@@ -2,7 +2,8 @@
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="substyle.css">
-  <title>YAML Template Generator</title>
+  <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/Hacker0x01/docs.hackerone.com/master/static/favicon.ico">
+  <title>H1 Template Generator</title>
 </head>
 <body>
   <header>
@@ -16,14 +17,14 @@
     <form action="/template" method="POST">
       <label for="vuln_category">Vulnerability category:</label><br>
       <select id="vuln-category" name="vuln_category">
-        <option value="1">XSS</option>
+        <option value="1">Reflected XSS</option>
         <option value="2">Open redirect</option>
         <option value="3">PHPinfo()</option>
       </select><br><br>
       <label for="target">Target URL:</label><br>
-      <input type="text" id="target" name="target"><br><br>
+      <input type="text" id="target" name="target" placeholder="Enter Target URL"><br><br>
       <label id="payloadtxt" for="payload">Payload:</label><br>
-      <input id="payload" type="text" name="payload" placeholder="Enter payload">
+      <input id="payload" type="text" name="payload" placeholder="Enter Payload">
       <input type="submit" value="Submit">
       
       <script>
