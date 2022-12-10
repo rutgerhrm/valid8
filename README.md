@@ -84,4 +84,4 @@ requests:
 This is a proof-of-concept app and is not intended for production use.
 
 ## Credits
-Author: Rutger Harmers - Intern at HackerOne
+Author: Rutger Harmers
