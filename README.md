@@ -1,4 +1,4 @@
-# tempgen
+# valid8
 Automatically generates pre-defined YAML templates out of user input.  
 
 ## YAML Template Generator POC
