@@ -18,7 +18,7 @@ Download latest release from the [release page](https://github.com/RutgerHrm/val
 
 - Clone the repository to your local machine using the following command:
 ```bash
-git clone https://github.com/RutgerHrm/valid8.git
+git clone https://github.com/rutgerhrm/valid8.git
 ```
 - Navigate to the root directory of the project:
 ```bash
