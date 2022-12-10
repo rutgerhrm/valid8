@@ -66,7 +66,7 @@ requests:
 ```
 Output: 
 
-![phpinfo.yaml](https://i.imgur.com/ENCSQe7.jpeg "Output php-info.yaml")
+![phpinfo.yaml](https://i.imgur.com/oi3gFEH.jpeg "Output php-info.yaml")
 
 
 - Open Redirect
