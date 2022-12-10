@@ -46,11 +46,12 @@ Here are a few examples of two different templates that can be generated:
 
 Public PHPinfo()
 ```yaml
-id: PHPinfo checker
+id: valid8-phpinfo
 
 info:
-  name: PHPinfo() page
+  name: PHPinfo Disclosure
   author: Rutger Harmers
+  severity: low
 
 requests:
   - method: GET
@@ -62,6 +63,11 @@ requests:
           - "PHP Extension"
           - "PHP Version"
         condition: and
+```
+
+Result showing valid: 
+```bash
+[2022-12-10 09:09:19] [valid8-phpinfo] [http] [low] http://testphp.vulnweb.com/secured/phpinfo.php
 ```
 
 
