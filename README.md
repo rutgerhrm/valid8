@@ -69,6 +69,69 @@ Output:
 ![phpinfo.yaml](https://i.imgur.com/ENCSQe7.jpeg "Output php-info.yaml")
 
 
+- Open Redirect
+```yaml
+id: valid8-openred
+
+info:
+  name: Open Redirect Detection
+  author: Rutger Harmers, Princechaddha
+  severity: medium
+
+requests:
+  - method: GET
+    path:
+      - "{{target}}"
+
+    payloads:
+      redirect:
+        - "evil.com"
+
+    fuzzing:
+      - part: query
+        mode: single
+        keys:
+          - AuthState
+          - URL
+          - _url
+          - callback
+          - checkout
+          - checkout_url
+          - content
+          - continue
+          - continueTo
+          - counturl
+          - data
+          - ETC ETC
+          
+        fuzz:
+          - "https://{{redirect}}"
+
+      - part: query
+        mode: single
+        values:
+          - "https?://" 
+        fuzz:
+          - "https://{{redirect}}"
+
+    stop-at-first-match: true
+    matchers-condition: and
+    matchers:
+      - type: regex
+        part: header
+        regex:
+          - "(?m)^(?:Location\s*?:\s*?)(?:https?:\/\/|\/\/|\/\\\\|\/\\)?(?:[a-zA-Z0-9\-_\.@]*)evil\.com\/?(\/|[^.].*)?$" 
+
+      - type: status
+        status:
+          - 301
+          - 302
+          - 307
+```
+Output:
+
+![openredirect.yaml](https://i.imgur.com/YJOMsKs.jpg "Output openredirect.yaml")
+
 - Reflected XSS
 ```yaml
 id: XSS checker
