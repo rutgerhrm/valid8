@@ -42,7 +42,7 @@ ruby tempgen.rb
 
 
 ## Examples
-Here are a few examples of two different templates that can be generated:
+Here are a few examples of the different templates that can be generated:
 
 - Public PHPinfo()
 ```yaml
