@@ -5,7 +5,7 @@ require 'sinatra'
 
 # Define the Nuclei YAML templates for different vulnerability categories (just two for now)
 xss_template = <<-YAML
-id: XSS checker
+id: RXSS checker
 
 info:
   name: Reflected XSS
@@ -91,12 +91,18 @@ post '/template' do
   # Capture the hacker's input for the target and payload variables
   target, payload = capture_input(params[:target], params[:payload])
 
+  # Get the current time
+  start_time = Time.now
+
   # Use the input values to fill in the placeholder variables in the selected template
   template = template.gsub("{{target}}", target)
   template = template.gsub("{{payload}}", payload)
 
   # Generate the complete Nuclei YAML file
   nuclei_yaml = template
+
+  # Get the current time
+  end_time = Time.now
 
   # Save the Nuclei YAML file to the current directory
   File.write("nuclei_template.yaml", nuclei_yaml)
@@ -105,6 +111,13 @@ post '/template' do
   puts ""
   puts nuclei_yaml    
   puts ""
+
+  # Calculate the elapsed time
+  elapsed_time = (end_time - start_time)
+  # Calculate the elapsed time in nanoseconds 
+  elapsed_microseconds = elapsed_time.to_f * 1_000_000
+  # Output the elapsed time
+  puts "Generation time: #{elapsed_microseconds}μs"
 
   # Success page
   send_file 'success.html'
