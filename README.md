@@ -130,7 +130,7 @@ requests:
 ```
 Output:
 
-![openredirect.yaml](https://i.imgur.com/YJOMsKs.png "Output openredirect.yaml")
+![openredirect.yaml](https://i.imgur.com/GpILliZ.jpeg "Output openredirect.yaml")
 
 - Reflected XSS
 ```yaml
