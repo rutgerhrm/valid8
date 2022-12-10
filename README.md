@@ -44,7 +44,7 @@ ruby tempgen.rb
 ## Examples
 Here are a few examples of two different templates that can be generated:
 
-Public PHPinfo()
+- Public PHPinfo()
 ```yaml
 id: valid8-phpinfo
 
@@ -69,7 +69,7 @@ Output:
 ![alt text](https://i.imgur.com/LvHH9bN.jpeg "Output php-info.yaml")
 
 
-Reflected XSS
+- Reflected XSS
 ```yaml
 id: XSS checker
 
