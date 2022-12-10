@@ -1,4 +1,4 @@
-# YAML template generator POC
+# Valid8 YAML template generator POC
 # Rutger Harmers
 
 require 'sinatra'
