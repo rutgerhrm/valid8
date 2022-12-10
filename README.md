@@ -66,7 +66,7 @@ requests:
 ```
 Output: 
 
-![alt text](https://i.imgur.com/LvHH9bN.jpeg "Output php-info.yaml")
+![phpinfo.yaml](https://i.imgur.com/ENCSQe7.jpeg "Output php-info.yaml")
 
 
 - Reflected XSS
