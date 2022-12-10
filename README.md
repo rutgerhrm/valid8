@@ -64,11 +64,8 @@ requests:
           - "PHP Version"
         condition: and
 ```
-
-Result showing valid: 
-```bash
-[2022-12-10 09:09:19] [valid8-phpinfo] [http] [low] http://testphp.vulnweb.com/secured/phpinfo.php
-```
+Output: 
+![alt text](https://i.imgur.com/ENCSQe7.jpeg "php-info.yaml output")
 
 
 Reflected XSS
