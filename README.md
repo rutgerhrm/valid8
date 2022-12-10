@@ -65,7 +65,7 @@ requests:
         condition: and
 ```
 Output: 
-![alt text](https://i.imgur.com/ENCSQe7.jpeg "php-info.yaml output")
+![alt text]([https://i.imgur.com/ENCSQe7.jpeg](https://i.imgur.com/LvHH9bN.jpeg) "Output php-info.yaml")
 
 
 Reflected XSS
