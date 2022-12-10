@@ -91,7 +91,7 @@ requests:
 ---
 
 ## About
-This is a proof-of-concept app and is not intended for production use.
+This is a proof-of-concept app made for an internship project and is not intended for production use.
 
 ## Credits
 Author: Rutger Harmers
