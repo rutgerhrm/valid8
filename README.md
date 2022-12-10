@@ -2,7 +2,7 @@
 Automatically generates pre-defined YAML templates out of user input.  
 
 ## YAML Template Generator POC
-A simple proof-of-concept Sinatra app to generate Nuclei YAML templates for different vulnerability categories based on user input.
+Valid8 is a simple proof-of-concept Sinatra app to generate Nuclei YAML templates for different vulnerability categories based on user input. The project currently supports three vulnerability categories: XSS, open redirect, and PHPinfo disclosure.
 
 ## Requirements
 - To run this app, you need to have Sinatra installed. To install Sinatra, run the following command in the terminal:
@@ -12,8 +12,8 @@ A simple proof-of-concept Sinatra app to generate Nuclei YAML templates for diff
 - Run the code using the command ```ruby tempgen.rb``` to start the Sinatra server.
 - Access the submission form by going to the specified route (in this case, the default route of http://localhost:4567/).
 - Select the vulnerability category you want to generate a template for and enter the target and payload values.
-- Submit the form to generate the Nuclei YAML template and save it to the current directory.
-- The generated template will be output to the terminal and a success page will be displayed in the browser.
+- Click the "Submit report" button to generate the YAML template.
+- The generated template will be output to the terminal and saved to the current directory as ```nuclei_template.yaml```.
 
 ## Examples
 Here are a few examples of two different templates that can be generated:
