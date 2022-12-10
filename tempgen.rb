@@ -1,4 +1,4 @@
-# YAML template generator POC
+# YAML template generator app POC
 # Rutger Harmers, Intern at HackerOne
 
 require 'sinatra'
