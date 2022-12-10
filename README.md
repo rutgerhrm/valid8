@@ -8,6 +8,14 @@ Valid8 is a simple proof-of-concept Sinatra app to generate Nuclei YAML template
 - To run this app, you need to have Sinatra installed. To install Sinatra, run the following command in the terminal:
 ```gem install sinatra```
 
+## Installation
+- Clone the repository to your local machine using the following command:
+```git clone https://github.com/RutgerHrm/valid8.git```
+- Navigate to the root directory of the project:
+```cd valid8```
+- Install the required gems using the following command:
+```bundle install```
+
 ## Usage
 - Run the code using the command ```ruby tempgen.rb``` to start the Sinatra server.
 - Access the submission form by going to the specified route (in this case, the default route of http://localhost:4567/).
@@ -19,7 +27,7 @@ Valid8 is a simple proof-of-concept Sinatra app to generate Nuclei YAML template
 Here are a few examples of two different templates that can be generated:
 
 Public PHPinfo()
-```
+```yaml
 id: PHPinfo checker
 
 info:
@@ -39,7 +47,7 @@ requests:
 ```
 
 Reflected XSS
-```
+```yaml
 id: XSS checker
 
 info:
