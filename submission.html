@@ -6,7 +6,7 @@
 <head>
   <link rel="stylesheet" type="text/css" href="substyle.css">
   <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/Hacker0x01/docs.hackerone.com/master/static/favicon.ico">
-  <title>H1 Template Generator</title>
+  <title>V8 Submission Form</title>
 </head>
 <body>
   <header>
@@ -16,8 +16,8 @@
   </header>
   <main>
     <!-- Under here is the user submission form with user input fields and stuff -->
-    <h1>HackerOne Vulnerability Submission Form 2.0</h1>
-    <p>Please fill out the form below to submit the vulnerability and generate a YAML template out of it!</p>
+    <h1>V8 Vulnerability Submission Form 2.0</h1>
+    <p>Please fill out the form below to submit your vulnerability report and generate a YAML template out of it!</p>
     <form action="/template" method="POST">
       <label for="vuln_category">Vulnerability category:</label><br>
       <select id="vuln-category" name="vuln_category">
@@ -39,12 +39,12 @@
       
         // Add a change event listener to the select element
         select.addEventListener("change", function() {
-          // If the PHPinfo() option is selected, hide the payload input and payload text elements
-          if (this.value === "3") {
+          // If the PHPinfo() or Open Redirect options are selected, hide the payload input and payload text elements
+          if (this.value === "2" || this.value === "3") {
             payloadInput.style.display = "none";
             payloadInputtxt.style.display = "none";
           }
-          // Otherwise, show the payload input and text elements
+          // Otherwise show the payload input and text elements
           else {
             payloadInput.style.display = "block";
             payloadInputtxt.style.display = "block";
