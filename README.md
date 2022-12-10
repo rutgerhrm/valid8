@@ -12,7 +12,7 @@ Valid8 is a simple proof-of-concept Sinatra app to generate Nuclei YAML template
 ## Requirements
 - To run this app, you need to have Sinatra installed. To install Sinatra, run the following command in the terminal:
 ```bash
-gem install sinatra
+$ gem install sinatra
 ```
 
 ## Installation
