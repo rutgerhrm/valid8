@@ -9,7 +9,7 @@ A simple proof-of-concept Sinatra app to generate Nuclei YAML templates for diff
 ```gem install sinatra```
 
 ## Usage
-- Run the code using the command ```ruby webform.rb``` to start the Sinatra server.
+- Run the code using the command ```ruby tempgen.rb``` to start the Sinatra server.
 - Access the submission form by going to the specified route (in this case, the default route of http://localhost:4567/).
 - Select the vulnerability category you want to generate a template for and enter the target and payload values.
 - Submit the form to generate the Nuclei YAML template and save it to the current directory.
