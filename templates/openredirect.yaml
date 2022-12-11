@@ -1,8 +1,10 @@
+# Base template for Open Redirevt vulns, variable {{target}} is to be replaced
+
 id: valid8-openred
 
 info:
   name: Open Redirect Detection
-  author: Rutger Harmers, Princechaddha
+  author: Rutger Harmers
   severity: medium
 
 requests:
@@ -17,7 +19,7 @@ requests:
     fuzzing:
       - part: query
         mode: single
-        keys:
+        keys:           # Fuzz these parameters
           - AuthState
           - URL
           - _url

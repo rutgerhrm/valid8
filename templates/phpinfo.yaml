@@ -1,3 +1,5 @@
+# Base template for PHPinfo() leakage, variable {{target}} is to be replaced
+
 id: valid8-phpinfo
 
 info:
@@ -12,6 +14,6 @@ requests:
     matchers:
       - type: word
         words:
-          - "PHP Extension"
+          - "PHP Extension" 
           - "PHP Version"
         condition: and
