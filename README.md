@@ -78,7 +78,7 @@ id: valid8-openred
 
 info:
   name: Open Redirect Detection
-  author: Rutger Harmers, Princechaddha
+  author: Rutger Harmers
   severity: medium
 
 requests:
