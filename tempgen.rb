@@ -220,7 +220,7 @@ post '/template' do
   # Capture the hacker's input for the target and payload variables
   target, payload = capture_input(params[:target], params[:payload])
 
-  # Get the current time
+  # Get the current (start) time
   start_time = Time.now
 
   # Use the input values to fill in the placeholder variables in the selected template
@@ -230,7 +230,7 @@ post '/template' do
   # Generate the complete Nuclei YAML file
   nuclei_yaml = template
 
-  # Get the current time
+  # Get the current (end) time
   end_time = Time.now
 
   # Save the Nuclei YAML file to the current directory
