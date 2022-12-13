@@ -19,7 +19,7 @@ get '/' do
   return File.read("submission.html")
 end
   
-post '/template' do
+post '/submit' do
   # This form lets the hacker choose the base template for their submission
   if params[:vuln_category] == "1"
     template = rxss_template
