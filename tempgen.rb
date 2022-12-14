@@ -63,6 +63,7 @@ post '/template' do
   # Outputs the elapsed time
   puts "Generation time: #{elapsed_microseconds}μs"
 
+  # Executes template and outputs result to terminal
   result = Terrapin::CommandLine.new("nuclei -t nuclei_template.yaml -u '{{target}}'").run
   puts result
 
