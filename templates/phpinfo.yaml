@@ -1,5 +1,3 @@
-# Base template for PHPinfo() leakage, variable {{target}} is to be replaced
-
 id: valid8-phpinfo
 
 info:

@@ -2,6 +2,7 @@
 # Rutger Harmers
 
 require 'sinatra'
+require 'terrapin'
 
 # Variables for the base templates
 open_redirect_template = File.read("templates/openredirect.yaml")
@@ -19,7 +20,7 @@ get '/' do
   return File.read("submission.html")
 end
   
-post '/submit' do
+post '/template' do
   # This form lets the hacker choose the base template for their submission
   if params[:vuln_category] == "1"
     template = rxss_template
@@ -61,6 +62,9 @@ post '/submit' do
   elapsed_microseconds = elapsed_time.to_f * 1_000_000
   # Outputs the elapsed time
   puts "Generation time: #{elapsed_microseconds}μs"
+
+  result = Terrapin::CommandLine.new("nuclei -t nuclei_template.yaml -u '{{target}}'").run
+  puts result
 
   # Display the succes page
   send_file 'success.html'

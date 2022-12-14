@@ -1,5 +1,3 @@
-# Base template for Open Redirevt vulns, variable {{target}} is to be replaced
-
 id: valid8-openred
 
 info:
@@ -10,7 +8,7 @@ info:
 requests:
   - method: GET
     path:
-      - "{{target}}"
+      - "http://testphp.vulnweb.com/redir.php?r=https://www.hackerone.com"
 
     payloads:
       redirect:
@@ -19,7 +17,7 @@ requests:
     fuzzing:
       - part: query
         mode: single
-        keys:           # Fuzz these parameters
+        keys:
           - AuthState
           - URL
           - _url
@@ -130,7 +128,7 @@ requests:
       - type: regex
         part: header
         regex:
-          - "(?m)^(?:Location\s*?:\s*?)(?:https?:\/\/|\/\/|\/\\\\|\/\\)?(?:[a-zA-Z0-9\-_\.@]*)evil\.com\/?(\/|[^.].*)?$" # https://regex101.com/r/ZDYhFh/1
+          - '(?m)^(?:Location\s*?:\s*?)(?:https?:\/\/|\/\/|\/\\\\|\/\\)?(?:[a-zA-Z0-9\-_\.@]*)evil\.com\/?(\/|[^.].*)?$' # https://regex101.com/r/ZDYhFh/1
 
       - type: status
         status:
