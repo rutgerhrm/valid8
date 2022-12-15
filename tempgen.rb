@@ -3,6 +3,8 @@
 
 require 'sinatra'
 require 'terrapin'
+require 'pathname'
+require 'json'
 
 # Variables for the base templates
 open_redirect_template = File.read("templates/openredirect.yaml")
@@ -22,15 +24,14 @@ end
   
 post '/template' do
   # This form lets the hacker choose the base template for their submission
-  if params[:vuln_category] == "1"
-    template = rxss_template
-  elsif params[:vuln_category] == "2"
-    template = open_redirect_template
-  elsif params[:vuln_category] == "3"
-    template = phpinfo_template
-  else
-    return "Invalid selection. Exiting program."
-  end
+  template =
+    case params[:vuln_category]
+    when "1" then rxss_template
+    when "2" then open_redirect_template
+    when "3" then phpinfo_template
+    else
+      return "Invalid selection. Exiting program."
+    end
 
   # Captures the hacker's input for the target and payload variables
   target, payload = capture_input(params[:target], params[:payload])
@@ -64,9 +65,29 @@ post '/template' do
   puts "Generation time: #{elapsed_microseconds}μs"
 
   # Executes template and outputs result to terminal
-  result = Terrapin::CommandLine.new("nuclei -t nuclei_template.yaml -u '{{target}}'").run
-  puts result
+  line = Terrapin::CommandLine.new("nuclei", "-t :template_file -u :target -silent -json")
+  template_path = Pathname.new("nuclei_template.yaml").realpath.to_s
+  
+  puts "Running #{line.command(template_file: template_path, target: target)}..."
+  
+  begin
+    result = line.run(template_file: template_path, target: target)
+    json = JSON.parse(result)
+  rescue JSON::ParserError
+    puts "Nuclei returned invalid json!"
+    return
+  end
 
+  if json["matcher-status"]
+    puts "SUCCESS! Matched lines:"
+    puts json["matched-line"]
+  else
+    puts "FAILED! No match :("
+  end
+
+  puts "[DEBUG]"
+  puts JSON.pretty_generate(json)
+  
   # Display the succes page
   send_file 'success.html'
 end
