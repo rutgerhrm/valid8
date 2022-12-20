@@ -8,7 +8,7 @@ info:
 requests:
   - method: GET
     path:
-      - "http://testphp.vulnweb.com/secured/phpinfo.php"
+      - "dkjasd"
     matchers:
       - type: word
         words:

@@ -75,12 +75,12 @@ post '/template' do
     json = JSON.parse(result)
   rescue JSON::ParserError
     puts "Nuclei returned invalid json!"
+    send_file 'success.html'
     return
   end
 
   if json["matcher-status"]
-    puts "SUCCESS! Matched lines:"
-    puts json["matched-line"]
+    puts "SUCCESS! Matched line: #{json["matched-line"]}"
   else
     puts "FAILED! No match :("
   end
