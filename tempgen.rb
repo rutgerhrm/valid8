@@ -69,7 +69,7 @@ post '/template' do
   template_path = Pathname.new("nuclei_template.yaml").realpath.to_s
   
   puts "Running #{line.command(template_file: template_path, target: target)}..."
-  
+
   begin
     result = line.run(template_file: template_path, target: target)
     json = JSON.parse(result)
