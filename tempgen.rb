@@ -75,7 +75,7 @@ post '/template' do
     json = JSON.parse(result)
   rescue JSON::ParserError
     puts "Nuclei returned invalid json!"
-    send_file 'success.html'
+    send_file 'failed.html'
     return
   end
 
