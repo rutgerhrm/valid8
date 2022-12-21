@@ -1,27 +1,22 @@
 id: valid8-rxss
 
 info:
-  name: RXSS Validation
+  name: RXSS Detection
   author: Rutger Harmers
-  severity: low
+  severity: medium
 
 requests:
   - method: GET
     path:
       - '{{target}}'
 
+
     matchers-condition: and
     matchers:
       - type: word
+        part: body
         words:
           - '{{payload}}'
-        part: body
-
-      - type: word
-        words:
-          - "text/html"
-        part: header
-
       - type: status
         status:
           - 200
