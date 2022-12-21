@@ -228,18 +228,17 @@ info:
 requests:
   - method: GET
     path:
-      - '{{target}}'
+      - 'http://testphp.vulnweb.com/listproducts.php?cat=><script>alert("XSS")</script>'
 
     matchers-condition: and
     matchers:
       - type: word
         part: body
         words:
-          - '{{payload}}'
+          - '><script>alert("XSS")</script>'
       - type: status
         status:
           - 200
-
 ```
 Output:
 
