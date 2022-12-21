@@ -218,29 +218,32 @@ Output:
 
 - Reflected XSS
 ```yaml
-id: XSS checker
+id: valid8-rxss
 
 info:
-  name: Reflected XSS
+  name: RXSS Detection
   author: Rutger Harmers
+  severity: medium
 
 requests:
   - method: GET
     path:
-      - "{{target}}"
+      - '{{target}}'
 
-    payloads:
-      rce:
-        - "{{payload}}"
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:
+          - '{{payload}}'
+      - type: status
+        status:
+          - 200
 
-    checks:
-      - type: regex
-        target: body
-        pattern: "{{payload}}"
 ```
 Output:
 
-Not yet complete.
+![testxss.yaml](https://i.imgur.com/bmso0on.jpeg "Output testxss.yaml")
 
 ---
 
