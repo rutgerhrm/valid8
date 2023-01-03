@@ -35,6 +35,10 @@ post '/template' do
 
   # Captures the hacker's input for the target and payload variables
   target, payload = capture_input(params[:target], params[:payload])
+  payload = payload.gsub('"', '\"')
+  target = target.gsub('"', '\"')
+  payload = payload.gsub("'", "\'")
+  target = target.gsub("'", "\'")
 
   # Gets the current (start) time
   start_time = Time.now
@@ -76,6 +80,7 @@ post '/template' do
   rescue JSON::ParserError
     puts "Nuclei returned invalid json!"
     send_file 'failed.html'
+    puts JSON.pretty_generate(json)
     return
   end
 

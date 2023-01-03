@@ -8,14 +8,14 @@ info:
 requests:
   - method: GET
     path:
-      - '{{target}}'
+      - "{{target}}"
 
     matchers-condition: and
     matchers:
       - type: word
         part: body
         words:
-          - '{{payload}}'
+          - "{{payload}}"
       - type: status
         status:
           - 200

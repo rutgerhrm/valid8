@@ -1,17 +1,21 @@
-id: valid8-phpinfo
+id: valid8-rxss
 
 info:
-  name: PHPinfo Detection
+  name: RXSS Detection
   author: Rutger Harmers
-  severity: low
+  severity: medium
 
 requests:
   - method: GET
     path:
-      - "emdjes"
+      - "http://testphp.vulnweb.com/listproducts.php?cat=><script>alert('XSS')</script>"
+
+    matchers-condition: and
     matchers:
       - type: word
+        part: body
         words:
-          - "PHP Extension" 
-          - "PHP Version"
-        condition: and
+          - "><script>alert('XSS')</script>"
+      - type: status
+        status:
+          - 200
