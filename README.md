@@ -194,7 +194,7 @@ requests:
         values:
           - "https?://" # Replace HTTP URLs with alternatives
         fuzz:
-          - "https://{{redirect}}"
+          - "https://www.hackerone.com"
 
     stop-at-first-match: true
     matchers-condition: and
