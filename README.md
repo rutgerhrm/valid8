@@ -38,8 +38,9 @@ ruby tempgen.rb
 ``` 
 2. Access the submission form by navigating to http://localhost:4567/.
 3. Select the vulnerability category you want to generate a template for and enter the target and payload values.
-4. Click the "Submit report" button to generate the YAML template.
+4. Click the "Submit report" button to generate and execute the YAML template.
 5. The generated template will be output to the terminal and saved to the current directory as ```nuclei_template.yaml```.
+6. The execution results will be output to the terminal in a clean JSONL(ines) format
 
 
 ## Examples
