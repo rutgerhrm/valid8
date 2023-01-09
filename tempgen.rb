@@ -71,7 +71,7 @@ post '/template' do
   # Executes template and outputs result to terminal
   line = Terrapin::CommandLine.new("nuclei", "-t :template_file -u :target -silent -json")
   template_path = Pathname.new("nuclei_template.yaml").realpath.to_s
-  
+
   puts "Running #{line.command(template_file: template_path, target: target)}..."
 
   begin
